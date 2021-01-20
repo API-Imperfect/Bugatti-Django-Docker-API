@@ -7,12 +7,14 @@ from .model_managers import CustomUserAccountManager
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    # User model supporting email instead of username
     email=models.EmailField(_("Your correct email"), max_length=255, unique=True)
     name= models.CharField(_("Your full name"), max_length=100)
     is_active=models.BooleanField(default=True)
     is_staff=models.BooleanField(default=False)
     date_joined=models.DateTimeField(default=timezone.now)
-
+    
+    # Overriding the default model manager to user our Custom model manager
     objects=CustomUserAccountManager()
 
     USERNAME_FIELD="email"
