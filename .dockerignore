@@ -1,6 +1,6 @@
 Dockerfile
 env
-log/
+logs/
 .git
 .cache
 .md

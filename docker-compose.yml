@@ -7,6 +7,10 @@ services:
          dockerfile: Dockerfile
       container_name: Bugatti-API
       command: python3 manage.py runserver 0.0.0.0:8000
+      # volumes here mounts the code to the container and updates
+      # the container when a change to the source code is made.
+      # without this you would have to rebuild the image each time
+      #changes are made to source code
       volumes:
          - .:/app
       ports:
@@ -20,6 +24,7 @@ services:
    postgres-db:
       image: postgres:12-alpine
       volumes:
+         # volumes here is where we declare a location for persistent data storage
          - postgres_data:/var/lib/postgresql/data/
       environment:
          - POSTGRES_USER=${POSTGRES_USER}

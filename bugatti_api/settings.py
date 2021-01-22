@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import environ
 from pathlib import Path
 
+# set casting and default value to debug
 env=environ.Env(DEBUG=(bool,False))
 
+# read .env file
 environ.Env.read_env(env_file=".env")
 
 
@@ -44,7 +46,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'users.apps.UsersConfig',
-
 ]
 
 MIDDLEWARE = [
