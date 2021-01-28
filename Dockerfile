@@ -19,6 +19,17 @@ RUN apk update \
   && apk del build-deps \
   && apk --no-cache add musl-dev linux-headers g++
 
+RUN apk add --no-cache \
+       libressl-dev \
+       musl-dev \
+       libffi-dev && \
+   pip install --no-cache-dir cryptography==3.3.1 && \
+   apk del \
+       libressl-dev \
+       musl-dev \
+       libffi-dev
+
+
 # upgrade pip version
 RUN pip install --upgrade pip
 
